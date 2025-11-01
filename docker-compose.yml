@@ -1,0 +1,159 @@
+version: '3.8'
+
+services:
+  # AI Gateway Service (Java Spring Boot)
+  ai-gateway:
+    build: ./services/ai-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/ai_platform
+      - SPRING_REDIS_HOST=redis
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - ai-network
+
+  # RAG Service (Python FastAPI)
+  rag-service:
+    build: ./services/rag-service
+    ports:
+      - "8001:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - PINECONE_API_KEY=${PINECONE_API_KEY}
+      - POSTGRES_URL=postgresql://ai_user:ai_password@postgres:5432/ai_platform
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - ai-network
+
+  # LLM Service (Python)
+  llm-service:
+    build: ./services/llm-service
+    ports:
+      - "8002:8000"
+    environment:
+      - MODEL_PATH=/models
+      - HUGGINGFACE_TOKEN=${HUGGINGFACE_TOKEN}
+    volumes:
+      - ./ai-models:/models
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    networks:
+      - ai-network
+
+  # Document Processor (Java)
+  document-processor:
+    build: ./services/document-processor
+    ports:
+      - "8003:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/ai_platform
+    depends_on:
+      - postgres
+    networks:
+      - ai-network
+
+  # MLOps Service
+  mlops-service:
+    build: ./services/mlops-service
+    ports:
+      - "8004:8000"
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - POSTGRES_URL=postgresql://ai_user:ai_password@postgres:5432/ai_platform
+    depends_on:
+      - mlflow
+    networks:
+      - ai-network
+
+  # PostgreSQL Database
+  postgres:
+    image: pgvector/pgvector:pg15
+    environment:
+      - POSTGRES_DB=ai_platform
+      - POSTGRES_USER=ai_user
+      - POSTGRES_PASSWORD=ai_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./data/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - ai-network
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - ai-network
+
+  # MLflow Tracking Server
+  mlflow:
+    image: python:3.11-slim
+    command: >
+      bash -c "pip install mlflow psycopg2-binary &&
+               mlflow server --host 0.0.0.0 --port 5000 
+               --backend-store-uri postgresql://ai_user:ai_password@postgres:5432/mlflow
+               --default-artifact-root /mlflow/artifacts"
+    ports:
+      - "5000:5000"
+    volumes:
+      - mlflow_data:/mlflow
+    depends_on:
+      - postgres
+    networks:
+      - ai-network
+
+  # Prometheus Monitoring
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./infrastructure/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    networks:
+      - ai-network
+
+  # Grafana Dashboard
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./infrastructure/monitoring/grafana:/etc/grafana/provisioning
+    depends_on:
+      - prometheus
+    networks:
+      - ai-network
+
+volumes:
+  postgres_data:
+  redis_data:
+  mlflow_data:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  ai-network:
+    driver: bridge
