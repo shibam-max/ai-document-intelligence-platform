@@ -292,8 +292,6 @@ ai-document-intelligence-platform/
 
 ---
 
-**Built for Oracle AI Platform** - Demonstrating next-generation AI capabilities with production-ready microservices, RAG systems, and MLOps excellence.
-
 ## 📞 Contact
 
 **Shibam Samaddar**  
