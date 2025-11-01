@@ -1,4 +1,4 @@
-# 🤖 Enterprise AI-Powered Document Intelligence Platform
+# Enterprise AI-Powered Document Intelligence Platform
 
 > **Production-ready AI platform demonstrating Generative AI, RAG systems, and MLOps with Java microservices architecture**
 
@@ -8,23 +8,21 @@
 [![Docker](https://img.shields.io/badge/Docker-Containerized-blue?style=flat-square)](https://docker.com/)
 [![Kubernetes](https://img.shields.io/badge/Kubernetes-Orchestrated-blue?style=flat-square)](https://kubernetes.io/)
 
-## 🎯 Oracle AI Platform Alignment
-
 This platform demonstrates **next-generation AI capabilities** with enterprise-grade microservices:
 
-### ✅ **Generative AI & RAG Systems**
+### **Generative AI & RAG Systems**
 - **RAG Implementation** - Retrieval-Augmented Generation with vector databases
 - **LLM Integration** - Llama 2/3, OpenAI GPT-4, and custom fine-tuned models
 - **Agentic AI** - Multi-agent workflows with LangGraph orchestration
 - **Document Intelligence** - AI-powered content extraction and analysis
 
-### ✅ **MLOps & Infrastructure**
+### **MLOps & Infrastructure**
 - **Model Deployment** - Automated ML model versioning and deployment
 - **Monitoring** - Real-time model performance and drift detection
 - **A/B Testing** - Automated model comparison and rollout strategies
 - **Scalable Inference** - High-throughput AI model serving
 
-## 🏗️ System Architecture
+## System Architecture
 
 ### AI-First Microservices Architecture
 ```
@@ -53,33 +51,33 @@ This platform demonstrates **next-generation AI capabilities** with enterprise-g
                         └─────────────────┘    └─────────────────┘
 ```
 
-## 🚀 Key AI Features
+## Key AI Features
 
-### 🧠 **Generative AI Capabilities**
+### **Generative AI Capabilities**
 - **Document Summarization** - Intelligent content summarization using Llama 2
 - **Question Answering** - RAG-based Q&A system with context retrieval
 - **Content Generation** - AI-powered document creation and editing
 - **Multi-modal AI** - Text, image, and document processing
 
-### 🔍 **RAG System Implementation**
+### **RAG System Implementation**
 - **Vector Embeddings** - Sentence transformers and OpenAI embeddings
 - **Semantic Search** - Advanced similarity search with re-ranking
 - **Context Retrieval** - Intelligent document chunk retrieval
 - **Response Generation** - Context-aware answer generation
 
-### 🤖 **Agentic AI Workflows**
+### **Agentic AI Workflows**
 - **LangGraph Integration** - Multi-agent orchestration and workflows
 - **Tool Integration** - AI agents with external tool access
 - **Decision Making** - Intelligent routing and task delegation
 - **Memory Management** - Persistent conversation and context memory
 
-### 📊 **MLOps & Model Management**
+### **MLOps & Model Management**
 - **Model Versioning** - Automated model lifecycle management
 - **Performance Monitoring** - Real-time inference metrics and alerts
 - **Drift Detection** - Data and model drift monitoring
 - **Auto-scaling** - Dynamic model serving based on demand
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### **AI/ML Technologies**
 - **LangChain** - AI application framework and orchestration
@@ -113,7 +111,7 @@ This platform demonstrates **next-generation AI capabilities** with enterprise-g
 - **Terraform** - Infrastructure as code for cloud deployment
 - **Jenkins** - CI/CD with ML model deployment pipelines
 
-## 📈 Performance Metrics
+## Performance Metrics
 
 ### **AI Performance**
 - **RAG Accuracy**: 92% relevance score on enterprise documents
@@ -127,7 +125,7 @@ This platform demonstrates **next-generation AI capabilities** with enterprise-g
 - **Availability**: 99.95% uptime with intelligent failover
 - **Cost Optimization**: 40% reduction in AI inference costs
 
-## 🔧 Getting Started
+## Getting Started
 
 ### Prerequisites
 ```bash
@@ -159,7 +157,7 @@ kubectl apply -f k8s/
 curl http://localhost:8080/api/v1/ai/health
 ```
 
-## 📊 AI API Examples
+## AI API Examples
 
 ### Document Intelligence API
 ```bash
@@ -217,33 +215,33 @@ curl -X POST http://localhost:8080/api/v1/ai/generate \
   }'
 ```
 
-## 🎯 AI Skills Demonstrated
+## AI Skills Demonstrated
 
 ### **Generative AI Expertise**
-- ✅ **RAG Systems**: Production-ready retrieval-augmented generation
-- ✅ **LLM Integration**: Multiple model support (Llama, GPT, custom models)
-- ✅ **Agentic AI**: Multi-agent workflows with LangGraph
-- ✅ **Prompt Engineering**: Advanced prompt optimization and templates
+- **RAG Systems**: Production-ready retrieval-augmented generation
+- **LLM Integration**: Multiple model support (Llama, GPT, custom models)
+- **Agentic AI**: Multi-agent workflows with LangGraph
+- **Prompt Engineering**: Advanced prompt optimization and templates
 
 ### **MLOps & Infrastructure**
-- ✅ **Model Deployment**: Automated ML model serving and versioning
-- ✅ **Performance Monitoring**: Real-time model metrics and alerting
-- ✅ **A/B Testing**: Automated model comparison and gradual rollouts
-- ✅ **Cost Optimization**: Efficient resource utilization and scaling
+- **Model Deployment**: Automated ML model serving and versioning
+- **Performance Monitoring**: Real-time model metrics and alerting
+- **A/B Testing**: Automated model comparison and gradual rollouts
+- **Cost Optimization**: Efficient resource utilization and scaling
 
 ### **Enterprise Integration**
-- ✅ **Java Integration**: Spring AI framework for enterprise applications
-- ✅ **Microservices**: AI-powered microservices architecture
-- ✅ **Security**: Enterprise-grade authentication and data protection
-- ✅ **Scalability**: Cloud-native deployment with auto-scaling
+- **Java Integration**: Spring AI framework for enterprise applications
+- **Microservices**: AI-powered microservices architecture
+- **Security**: Enterprise-grade authentication and data protection
+- **Scalability**: Cloud-native deployment with auto-scaling
 
 ### **Open-Source AI Frameworks**
-- ✅ **LangChain**: Advanced AI application development
-- ✅ **LangGraph**: Multi-agent orchestration and workflows
-- ✅ **Llama Models**: Open-source LLM integration and fine-tuning
-- ✅ **Hugging Face**: Model hub integration and custom model deployment
+- **LangChain**: Advanced AI application development
+- **LangGraph**: Multi-agent orchestration and workflows
+- **Llama Models**: Open-source LLM integration and fine-tuning
+- **Hugging Face**: Model hub integration and custom model deployment
 
-## 🏆 Project Highlights
+## Project Highlights
 
 ### **Technical Innovation**
 - **Multi-Modal AI**: Text, document, and image processing capabilities
@@ -263,7 +261,7 @@ curl -X POST http://localhost:8080/api/v1/ai/generate \
 - **Version Control**: Complete model lifecycle management
 - **Compliance**: Audit trails and model explainability
 
-## 📋 Project Structure
+## Project Structure
 
 ```
 ai-document-intelligence-platform/
@@ -292,13 +290,13 @@ ai-document-intelligence-platform/
 
 ---
 
-## 📞 Contact
+## Contact
 
 **Shibam Samaddar**  
 AI/ML Engineer | Java Microservices Developer  
 📧 Email: shibamsamaddar1999@gmail.com  
-💼 LinkedIn: [linkedin.com/in/shibam-samaddar-177a2b1aa]  
-🐙 GitHub: [github.com/shibam-max]
+LinkedIn: [linkedin.com/in/shibam-samaddar-177a2b1aa]  
+GitHub: [github.com/shibam-max]
 
 ---
 
